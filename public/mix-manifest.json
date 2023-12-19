@@ -1,0 +1,13 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/dashboard/index.js": "/js/dashboard/index.js",
+    "/js/signup/index.js": "/js/signup/index.js",
+    "/js/statistics/index.js": "/js/statistics/index.js",
+    "/css/statistics.css": "/css/statistics.css",
+    "/css/signup.css": "/css/signup.css",
+    "/css/dashboard.css": "/css/dashboard.css",
+    "/css/app.css": "/css/app.css",
+    "/images/conference-img.jpg": "/images/conference-img.jpg",
+    "/images/passifi-bg.jpg": "/images/passifi-bg.jpg",
+    "/images/passifi-logo.png": "/images/passifi-logo.png"
+}
