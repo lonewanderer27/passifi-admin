@@ -17,14 +17,6 @@
     ],
     "routes": [
         {
-            "src": "/css/(.*)",
-            "dest": "public/css"
-        },
-        {
-            "src": "/js/(.*)",
-            "dest": "public/js"
-        },
-        {
             "src": "/(css|js|images)/(.*)",
             "dest": "public/$1/$2"
         },
@@ -33,6 +25,7 @@
             "dest": "/api/index.php"
         }
     ],
+    "buildCommand": "npm run prod",
     "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
