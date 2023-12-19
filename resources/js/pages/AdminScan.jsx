@@ -211,7 +211,14 @@ export default function AdminScan({event, attendeesApiRoute}) {
                                                             <div className="col px-5 py-5">
                                                                 <p className={"fs-5 fw-bold"}>Error: {Object.values(
                                                                     res.errors
-                                                                ).flat().join("\n")}</p>
+                                                                ).flat().join("\n").includes("unique") ? "You've already scanned!" : Object.values(
+                                                                    res.errors
+                                                                ).flat().join("\n").includes("unique")}</p>
+                                                            </div>
+                                                        )}
+                                                        {res.error !== "Validation failed" && (
+                                                            <div className="col px-5 py-5">
+                                                                <p className={"fs-5 fw-bold"}>Unknown Error. Please have a look in the console to fix it!</p>
                                                             </div>
                                                         )}
                                                     </div>

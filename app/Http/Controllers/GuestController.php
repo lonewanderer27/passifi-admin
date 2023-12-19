@@ -237,6 +237,14 @@ class GuestController extends Controller
                 "message" => "Your request to join the event is under review. You will be notified once you are approved."
             ], 201); // 201 Created
         } else {
+            if ($guest && $guest->approved) {
+                return response()->json([
+                    "error" => "You're already joined in this event!",
+                    "message" => "You're already joined in this event!",
+                    "success" => false
+                ], 422);
+            }
+
             $guest = Guest::create([
                 'event_id' => $event->id,
                 'user_id' => $user->id,
