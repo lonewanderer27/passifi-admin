@@ -6,7 +6,8 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
+//use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use chillerlan\QRCode\{QRCode, QROptions, Output\QROutputInterface};
 
 class EventController extends Controller
 {
@@ -63,7 +64,14 @@ class EventController extends Controller
         }
 
         // Generate QR Code
-        $qrCode = QrCode::format('png')->style('round')->size(500)->generate($event->invite_code);
+//        $qrCode = QrCode::format('png')->style('round')->size(500)->generate($event->invite_code);
+        $qrCode = (new QRCode((new QROptions([
+            'outputType' => QROutputInterface::GDIMAGE_PNG,
+            'scale' => 5,
+            'eccLevel' => QRCode::ECC_L,
+            'outputType' => QRCode::OUTPUT_IMAGE_PNG,
+            'imageBase64' => false,
+        ]))))->render($event->invite_code);
 
         // Create filename
         $filename = str_replace(' ', '_', $event->title) . '--invite--qrcode.png';
