@@ -17,6 +17,14 @@
     ],
     "routes": [
         {
+            "src": "/css/(.*)",
+            "dest": "public/css/$1/$2"
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "public/js/$1/$2"
+        },
+        {
             "src": "/(css|js|images)/(.*)",
             "dest": "public/$1/$2"
         },
