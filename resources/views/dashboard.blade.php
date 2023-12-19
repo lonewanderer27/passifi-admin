@@ -127,11 +127,15 @@ use Carbon\Carbon;
                                     class="ri-map-pin-2-fill card--icon map--pin"></i>{{ $event->location }}</span>
                         </div>
                         <div class="card--buttons">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button class="scan-button"
+                                    onclick="window.location.href = `{{ route('adminScan', ['id' => $event->id]) }}`">
+                                Scan
+                            </button>
+                            <button type="button" class="scan-button" data-bs-toggle="modal"
                                     data-bs-target="#event-qrcode-{{ $event->id }}">
                                 Show Invite QR
                             </button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="scan-button" data-bs-toggle="modal"
                                     data-bs-target="#admit-deny-event-{{ $event->id }}">
                                 Admit and Deny
                             </button>

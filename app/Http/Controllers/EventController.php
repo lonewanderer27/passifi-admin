@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 //use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Inertia\Inertia;
 use chillerlan\QRCode\{QRCode, QROptions, Output\QROutputInterface};
 
 class EventController extends Controller
@@ -86,9 +87,14 @@ class EventController extends Controller
     public function adminScan($id)
     {
         $event = Event::find($id);
+        Inertia::setRootView('event');
 
-        return view('event', [
-            'event' => $event
+        // fetch attendees api route
+        $attendeesApiRoute = route('attendees.createByEvent');
+
+        return Inertia::render('AdminScan', [
+            'event' => $event,
+            'attendeesApiRoute' => $attendeesApiRoute
         ]);
     }
 

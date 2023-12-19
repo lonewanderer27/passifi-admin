@@ -29,3 +29,5 @@ Route::get('events/{id}/guests/denied', [GuestController::class, 'getDeniedGuest
 Route::get('events/{id}/guests/pending', [GuestController::class, 'getPendingGuestsByEvent']);
 Route::patch('events/{id}/guests/{guest_id}/approve', [GuestController::class, 'approveGuest']);
 Route::patch('events/{id}/guests/{guest_id}/deny', [GuestController::class, 'denyGuest']);
+
+Route::post('attendees', [\App\Http\Controllers\AttendeeController::class, 'createByEvent'])->name('attendees.createByEvent');

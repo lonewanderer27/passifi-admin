@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix.css('resources/css/app.css', 'public/css')
-    .js('resources/js/app.js', 'public/js')
+    .js('resources/js/app.js', 'public/js').react()
     .css('resources/css/dashboard.css', 'public/css')
     .js('resources/js/dashboard/index.js', 'public/js/dashboard')
     .css('resources/css/signup.css', 'public/css')
