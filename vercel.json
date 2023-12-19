@@ -1,6 +1,8 @@
 {
     "version": 2,
     "framework": null,
+    "buildCommand": "npm run prod",
+    "outputDirectory": "public",
     "builds": [
         {
             "src": "/api/index.php",
@@ -25,8 +27,6 @@
             "dest": "/api/index.php"
         }
     ],
-    "buildCommand": "npm run prod",
-    "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
