@@ -14,6 +14,8 @@ Route::get('users', [UserController::class, 'index']);
 Route::post('users/signup', [UserController::class, 'signupUser']);
 Route::get('users/{id}', [UserController::class, 'findUserById']);
 Route::get('users/{id}/events/approved', [UserController::class, 'getApprovedEventsForUser']);
+Route::get('users/{id}/events/denied', [UserController::class, 'getDeniedEventsForUser']);
+Route::get('users/{id}/events/pending', [UserController::class, 'getPendingEventsForUser']);
 Route::post('users/getByEmailAndPassword', [UserController::class, 'getUserByEmailAndPassword']);
 
 Route::get('events', [EventController::class, 'index']);

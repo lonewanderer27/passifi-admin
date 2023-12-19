@@ -22,6 +22,90 @@ class UserController extends Controller
         ]);
     }
 
+    public function getDeniedEventsForUser($id, Request $request)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                "error" => "User not found!",
+                "message" => "User not found!",
+                "success" => false
+            ], 404);
+        }
+
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $events = Event::withCount([
+            'guests as current_attendees' => function ($query) use ($id) {
+                $query->where('user_id', $id)->where('denied', true);
+            }
+        ])
+            ->whereHas('guests', function ($query) use ($id) {
+                $query->where('user_id', $id)->where('denied', true);
+            });
+
+        // Optional date filtering
+        if ($start_date) {
+            $events->where('date', '>=', $start_date);
+        }
+
+        if ($end_date) {
+            $events->where('date', '<=', $end_date);
+        }
+
+        $events = $events->get();
+
+        return response()->json([
+            "events" => $events,
+            "error" => null,
+            "success" => true
+        ]);
+    }
+
+    public function getPendingEventsForUser($id, Request $request)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                "error" => "User not found!",
+                "message" => "User not found!",
+                "success" => false
+            ], 404);
+        }
+
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $events = Event::withCount([
+            'guests as current_attendees' => function ($query) use ($id) {
+                $query->where('user_id', $id)->where('pending', true);
+            }
+        ])
+            ->whereHas('guests', function ($query) use ($id) {
+                $query->where('user_id', $id)->where('pending', true);
+            });
+
+        // Optional date filtering
+        if ($start_date) {
+            $events->where('date', '>=', $start_date);
+        }
+
+        if ($end_date) {
+            $events->where('date', '<=', $end_date);
+        }
+
+        $events = $events->get();
+
+        return response()->json([
+            "events" => $events,
+            "error" => null,
+            "success" => true
+        ]);
+    }
+
     public function getApprovedEventsForUser($id, Request $request)
     {
         $user = User::find($id);
@@ -40,12 +124,14 @@ class UserController extends Controller
         $events = Event::withCount([
             'guests as current_attendees' => function ($query) use ($id) {
                 $query->where('user_id', $id)->where('approved', true);
-            },
-            'guests as total_attendees'
+            }
         ])
             ->whereHas('guests', function ($query) use ($id) {
                 $query->where('user_id', $id)->where('approved', true);
-            });
+            })
+            ->with(['guests' => function ($query) use ($id) {
+                $query->where('user_id', $id)->where('approved', true);
+            }]);
 
         // Optional date filtering
         if ($start_date) {

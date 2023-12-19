@@ -222,6 +222,8 @@ class GuestController extends Controller
             $guest = Guest::create([
                 'event_id' => $event->id,
                 'user_id' => $user->id,
+                'approved' => false,
+                'pending' => true
             ]);
 
             // send a response that the guest has been created along with the event and user details
@@ -238,6 +240,8 @@ class GuestController extends Controller
             $guest = Guest::create([
                 'event_id' => $event->id,
                 'user_id' => $user->id,
+                'approved' => true,
+                'pending' => false
             ]);
 
             // send a response that the guest has been added to the list
