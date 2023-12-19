@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\StatisticsController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\Controller::class, 'adminIndex'])->name('dashboard')->middleware('auth');
-Route::get('/events/id/{id}/scan', [\App\Http\Controllers\EventController::class, 'adminScan'])->name('adminScan');
+Route::get('/', [Controller::class, 'adminIndex'])->name('dashboard')->middleware('auth');
+Route::get('/events/id/{id}/scan', [EventController::class, 'adminScan'])->name('adminScan');
 
-Route::get('/statistics', [\App\Http\Controllers\StatisticsController::class, 'index'])->name('statistics');
+Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics');
 
-Route::post('/login', [\App\Http\Controllers\UserController::class, 'adminLogin'])->name('login');
-Route::get('/signup', [\App\Http\Controllers\UserController::class, 'showAdminSignup'])->name('signup');
-Route::post('/signup', [\App\Http\Controllers\UserController::class, 'adminSignup'])->name('signup');
-Route::get('/logout', [\App\Http\Controllers\UserController::class, 'adminLogout'])->name('logout');
+Route::post('/login', [UserController::class, 'adminLogin'])->name('login');
+Route::get('/signup', [UserController::class, 'showAdminSignup'])->name('signup');
+Route::post('/signup', [UserController::class, 'adminSignup'])->name('signup');
+Route::get('/logout', [UserController::class, 'adminLogout'])->name('logout');
