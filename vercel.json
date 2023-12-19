@@ -13,7 +13,7 @@
         },
         {
             "src": "/build/(.*)",
-            "dest": "/public/build/",
+            "dest": "/public/build/"
         }
     ],
     "env": {
