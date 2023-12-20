@@ -25,7 +25,7 @@ $base = './';
 foreach ($directories as $dir) {
     $it = new RecursiveDirectoryIterator($base . $dir);
     foreach (new RecursiveIteratorIterator($it) as $file) {
-        if ($file->getExtension() == 'php') {
+        if ($file->getExtension() == 'php' || $file->getExtension() == 'js') {
             echo "Removing comments from: " . $file->getRealPath() . "\n";
             $contents = file_get_contents($file->getRealPath());
             $new = preg_replace('/^(\{?)\s*?\/\*(.|[\r\n])*?\*\/([\r\n]+$|$)/im', '$1', $contents);
