@@ -108,7 +108,7 @@ use Carbon\Carbon;
                         <div class="card--data">
                             <div class="card--content">
                                 <div class=" h-25">
-                                    <img src="{{ $event->avatar }}" alt=""
+                                    <img src="{{ $event->avatar ?? '' }}" alt=""
                                          class="card--img img-fluid">
                                 </div>
                                 <h1 class="card--title">{{ $event->title }}</h1>
