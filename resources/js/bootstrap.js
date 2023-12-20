@@ -1,10 +1,20 @@
-window._ = require('lodash');
-window.dayjs = require('dayjs');
-window.$ = require('jquery');
+// window._ = require('lodash');
+// window.dayjs = require('dayjs');
+// window.$ = require('jquery');
 
-window.axios = require('axios');
+import _ from 'lodash';
+window._ = _;
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+import dayjs from 'dayjs';
+window.dayjs = dayjs;
+
+import jquery from 'jquery';
+window.$ = window.jQuery = jquery;
+
+import axios from 'axios';
+window.axios = axios;
+
+// window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // import Echo from 'laravel-echo';
 
