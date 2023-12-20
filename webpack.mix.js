@@ -20,14 +20,14 @@ mix.css('resources/css/app.css', 'public/css')
     .css('resources/css/statistics.css', 'public/css')
     .js('resources/js/statistics/index.js', 'public/js/statistics')
     .copyDirectory('resources/images', 'public/images')
-    .options({
-        hmrOptions: {
-            host: 'localhost',
-            port: '8079'
-        },
-    })
-    .webpackConfig({
-        devServer: {
-            port: '8079'
-        }
-    })
+    // .options({
+    //     hmrOptions: {
+    //         host: 'localhost',
+    //         port: '8079'
+    //     },
+    // })
+    // .webpackConfig({
+    //     devServer: {
+    //         port: '8079'
+    //     }
+    // })

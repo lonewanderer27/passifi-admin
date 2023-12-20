@@ -1,0 +1,1 @@
+(()=>{var e=document.getElementById("signUp"),t=document.getElementById("signIn"),n=document.getElementById("container");e.addEventListener("click",(function(){n.classList.add("right-panel-active")})),t.addEventListener("click",(function(){n.classList.remove("right-panel-active")}))})();
