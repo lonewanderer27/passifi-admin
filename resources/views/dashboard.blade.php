@@ -108,8 +108,8 @@ use Carbon\Carbon;
                         <div class="card--data">
                             <div class="card--content">
                                 <div class=" h-25">
-                                    <img src="{{ $event->avatar ?? mix('images/conference-img.jpg') }}" alt=""
-                                         class="card--img img-fluid">
+                                    <img src="{{ mix('images/conference-img.jpg') }}" alt=""
+                                         class="card--img img-fluid"/>
                                 </div>
                                 <h1 class="card--title">{{ $event->title }}</h1>
                                 <h5>ATTENDEES</h5>
