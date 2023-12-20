@@ -272,13 +272,6 @@ use Carbon\Carbon;
         });
     }
 </script>
-<script>
-    const events = @json($events);
-    console.log("events: ", events);
-
-    const event = events[0];
-    console.log("event: ", event);
-</script>
 <script defer>
     // Create a blank emails array
     let emails = [];
